@@ -24,8 +24,7 @@ struct AccountsOverviewView: View {
                     List {
                         ForEach(accountsList) {
                             account in
-                            NavigationLink(
-                                destination: MainMenuView(account: binding(for: account))) {
+                            NavigationLink(destination:AccountDetailView(account: binding(for: account), meterList: account.meters)) {
                                 AccountRow(account: account)
                             }
                         }
@@ -36,7 +35,7 @@ struct AccountsOverviewView: View {
                     
                 }
                 .padding(.all, 12.0)
-                .frame(width: UIScreen.main.bounds.width - 24, height: nil, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: UIScreen.main.bounds.width - 24, height: nil, alignment: .center)
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(10)

@@ -17,10 +17,19 @@ struct AccountDetailView: View {
         List {
             ForEach(meterList) {
                 meter in
-                MeterRow(meter: meter)
+                NavigationLink(destination: ChartView(meter: binding(for: meter))){
+                    MeterRow(meter: meter)
+                }
             }
         }
-        .navigationBarTitle(account.title)
+        .navigationTitle(self.account.title)
+    }
+    
+    private func binding(for meter: Meter) -> Binding<Meter> {
+        guard let meterIndex = meterList.firstIndex(where: { $0.id == meter.id }) else {
+            fatalError("Can't find meter in array")
+        }
+        return $meterList[meterIndex]
     }
 }
 

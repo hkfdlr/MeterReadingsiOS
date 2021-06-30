@@ -10,35 +10,35 @@ import SwiftUICharts
 import MeterReadingsCore
 
 struct ChartView: View {
-    @Binding var meters: [Meter]
+    @Binding var meter: Meter
     var selectedChartIndex = 0
     
     var body: some View {
-        ScrollView(.horizontal) {
-            HStack {
-                ForEach(meters) {
-                    meter in
-                    MultiLineChartView(data: [([1], GradientColors.orange
-                    )],
-                    title: meter.title,
-                    form: ChartForm.extraLarge)
-                }
-            }
+        VStack {
+            LineView(data: convertMeterReadingEntries(meter: meter))
+                .padding(.all, 12)
         }
+        .navigationTitle(self.meter.title)
     }
     
-    func convertMeterReadingEntries(meter: Meter) {
+    func convertMeterReadingEntries(meter: Meter) -> [Double] {
+        let sortedReadings = meter.meterReadingEntries.sorted {
+            $0.date < $1.date
+        }
         var entryValues: [Double] = []
         var entryIndex: Int
-        for entry in meter.meterReadingEntries {
-            entryIndex = meter.meterReadingEntries.firstIndex(where: {$0.id == entry.id})!
-            entryValues[entryIndex] = Double(Int(truncating: meter.meterReadingEntries[entryIndex].readingValue as NSNumber))
+        for reading in sortedReadings {
+            entryIndex = sortedReadings.firstIndex(where: {
+                $0.id == reading.id
+            })!
+            entryValues.insert(Double(reading.readingValue), at: entryIndex)
         }
+        return entryValues
     }
 }
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ChartView(meters: .constant(Account.data[0].meters))
+        ChartView(meter: .constant(Account.data[0].meters[0]))
     }
 }

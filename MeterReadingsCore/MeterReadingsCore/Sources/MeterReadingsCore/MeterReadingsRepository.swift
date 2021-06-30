@@ -20,4 +20,8 @@ public class MeterReadingsRepository : MeterReadingsRepositoryProtocol {
             completion($0)
         }
     }
+    
+    public func getMeterReadingsForAccount(completion: @escaping (Result<[MeterReadingEntry], Error>) -> Void) {
+        debugPrint("TODO")
+    }
 }

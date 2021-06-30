@@ -25,7 +25,9 @@ extension MeterReadingEntry {
     public static var data: [MeterReadingEntry] {
         [
             MeterReadingEntry(id: UUID(), date: Date(timeIntervalSince1970: 1623362400), readingValue: 123, meterType: MeterType.gas),
-            MeterReadingEntry(id: UUID(), date: Date(timeIntervalSince1970: 1623276000), readingValue: 121, meterType: MeterType.gas)
+            MeterReadingEntry(id: UUID(), date: Date(timeIntervalSince1970: 1623276000), readingValue: 121, meterType: MeterType.gas),
+            MeterReadingEntry(id: UUID(), date: Date(timeIntervalSince1970: 1623189600
+            ), readingValue: 111, meterType: MeterType.gas)
         ]
     }
 }

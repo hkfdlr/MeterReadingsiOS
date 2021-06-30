@@ -11,4 +11,6 @@ public protocol MeterReadingsRepositoryProtocol {
 
     func getMeterType(completion: @escaping (Result<[MeterType], Error>) -> Void)
 
+    func getMeterReadingsForAccount(completion: @escaping (Result<[MeterReadingEntry], Error>) -> Void)
+    
 }

@@ -9,10 +9,10 @@ import SwiftUI
 import MeterReadingsCore
 
 struct MainMenuView: View {
-    @Binding var account: Account
+    @Binding var accountsList: [Account]
     var body: some View {
         TabView {
-            AccountDetailView(account: $account, meterList: account.meters)
+            AccountsOverviewView(accountsList: $accountsList)
                 .tabItem {
                     ZStack {
                         Image("home")
@@ -20,14 +20,6 @@ struct MainMenuView: View {
                             .scaledToFit()
                     }
                     Text("Home")
-                }
-            ChartView(meters: .constant(account.meters))
-                .environmentObject(ChartViewModel())
-                .tabItem {
-                    Image("chart")
-                        .resizable()
-                        .scaledToFit()
-                    Text("Graph")
                 }
             SettingsView()
                 .environmentObject(SettingsViewModel())
@@ -45,7 +37,7 @@ struct MainMenuView: View {
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MainMenuView(account: .constant(Account.data[0]))
+            MainMenuView(accountsList: .constant(Account.data))
                 .previewDevice("iPhone 7")
         }
     }
