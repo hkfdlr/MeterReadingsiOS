@@ -1,0 +1,705 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F0BAB3B2674DBC100D45B18 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BAB3A2674DBC100D45B18 /* EditView.swift */; };
+		3F0BAB412674ECA800D45B18 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 3F0BAB402674ECA800D45B18 /* SwiftUICharts */; };
+		3F33ABF62668CCFC00B7074E /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33ABF52668CCFC00B7074E /* MainMenuView.swift */; };
+		3F67CC7A2667AE7700BBA454 /* MeterReadingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F67CC792667AE7700BBA454 /* MeterReadingsApp.swift */; };
+		3F67CC7E2667AE7800BBA454 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F67CC7D2667AE7800BBA454 /* Assets.xcassets */; };
+		3F67CC812667AE7800BBA454 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F67CC802667AE7800BBA454 /* Preview Assets.xcassets */; };
+		3F67CC8C2667AE7800BBA454 /* MeterReadingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F67CC8B2667AE7800BBA454 /* MeterReadingsTests.swift */; };
+		3F67CC972667AE7800BBA454 /* MeterReadingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F67CC962667AE7800BBA454 /* MeterReadingsUITests.swift */; };
+		3F9DE79B267222BC000157CB /* MeterReadingsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F9DE79A267222BC000157CB /* MeterReadingsCore */; };
+		3F9DE79D267222BF000157CB /* MeterReadingsInfrastructure in Frameworks */ = {isa = PBXBuildFile; productRef = 3F9DE79C267222BF000157CB /* MeterReadingsInfrastructure */; };
+		3F9DE7A4267223A1000157CB /* AccountsOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33ABE62668CB9400B7074E /* AccountsOverviewView.swift */; };
+		3F9DE7AC267227C7000157CB /* AccountRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DE7AB267227C7000157CB /* AccountRow.swift */; };
+		3F9DE7B726725E99000157CB /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DE7B626725E99000157CB /* AccountDetailView.swift */; };
+		3F9DE7BC267261F2000157CB /* MeterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DE7BB267261F2000157CB /* MeterRow.swift */; };
+		3FA706462668E735000939E4 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA706452668E735000939E4 /* ChartView.swift */; };
+		3FA7064B2668E747000939E4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA7064A2668E747000939E4 /* SettingsView.swift */; };
+		3FA7065D26690569000939E4 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA7065C26690569000939E4 /* ChartViewModel.swift */; };
+		3FA7066226690572000939E4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA7066126690572000939E4 /* SettingsViewModel.swift */; };
+		3FA7066B266917A1000939E4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FA7066D266917A1000939E4 /* Localizable.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F67CC882667AE7800BBA454 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F67CC6E2667AE7700BBA454 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F67CC752667AE7700BBA454;
+			remoteInfo = MeterReadings;
+		};
+		3F67CC932667AE7800BBA454 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F67CC6E2667AE7700BBA454 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F67CC752667AE7700BBA454;
+			remoteInfo = MeterReadings;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3F0BAB3A2674DBC100D45B18 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		3F33ABE62668CB9400B7074E /* AccountsOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountsOverviewView.swift; path = MeterReadings/Views/AccountsOverviewView.swift; sourceTree = SOURCE_ROOT; };
+		3F33ABF52668CCFC00B7074E /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		3F67CC762667AE7700BBA454 /* MeterReadings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeterReadings.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F67CC792667AE7700BBA454 /* MeterReadingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingsApp.swift; sourceTree = "<group>"; };
+		3F67CC7D2667AE7800BBA454 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3F67CC802667AE7800BBA454 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3F67CC822667AE7800BBA454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F67CC872667AE7800BBA454 /* MeterReadingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeterReadingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F67CC8B2667AE7800BBA454 /* MeterReadingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingsTests.swift; sourceTree = "<group>"; };
+		3F67CC8D2667AE7800BBA454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F67CC922667AE7800BBA454 /* MeterReadingsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeterReadingsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F67CC962667AE7800BBA454 /* MeterReadingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingsUITests.swift; sourceTree = "<group>"; };
+		3F67CC982667AE7800BBA454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F9DE7AB267227C7000157CB /* AccountRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRow.swift; sourceTree = "<group>"; };
+		3F9DE7B626725E99000157CB /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
+		3F9DE7BB267261F2000157CB /* MeterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterRow.swift; sourceTree = "<group>"; };
+		3FA706452668E735000939E4 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		3FA7064A2668E747000939E4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3FA7065C26690569000939E4 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
+		3FA7066126690572000939E4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		3FA7066C266917A1000939E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3FA70671266917A9000939E4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F67CC732667AE7700BBA454 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F0BAB412674ECA800D45B18 /* SwiftUICharts in Frameworks */,
+				3F9DE79D267222BF000157CB /* MeterReadingsInfrastructure in Frameworks */,
+				3F9DE79B267222BC000157CB /* MeterReadingsCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F67CC842667AE7800BBA454 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F67CC8F2667AE7800BBA454 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F33ABE52668CB6800B7074E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3F33ABF52668CCFC00B7074E /* MainMenuView.swift */,
+				3F33ABE62668CB9400B7074E /* AccountsOverviewView.swift */,
+				3FA706452668E735000939E4 /* ChartView.swift */,
+				3FA7064A2668E747000939E4 /* SettingsView.swift */,
+				3F9DE7B626725E99000157CB /* AccountDetailView.swift */,
+				3F0BAB3A2674DBC100D45B18 /* EditView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3F33ABEB2668CBCF00B7074E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3FA7065C26690569000939E4 /* ChartViewModel.swift */,
+				3FA7066126690572000939E4 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3F67CC6D2667AE7700BBA454 = {
+			isa = PBXGroup;
+			children = (
+				3F67CC782667AE7700BBA454 /* MeterReadings */,
+				3F67CC8A2667AE7800BBA454 /* MeterReadingsTests */,
+				3F67CC952667AE7800BBA454 /* MeterReadingsUITests */,
+				3F67CC772667AE7700BBA454 /* Products */,
+				3F67CCAA2667B1CE00BBA454 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3F67CC772667AE7700BBA454 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F67CC762667AE7700BBA454 /* MeterReadings.app */,
+				3F67CC872667AE7800BBA454 /* MeterReadingsTests.xctest */,
+				3F67CC922667AE7800BBA454 /* MeterReadingsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F67CC782667AE7700BBA454 /* MeterReadings */ = {
+			isa = PBXGroup;
+			children = (
+				3F33ABEB2668CBCF00B7074E /* ViewModels */,
+				3F33ABE52668CB6800B7074E /* Views */,
+				3F67CC792667AE7700BBA454 /* MeterReadingsApp.swift */,
+				3F67CC7D2667AE7800BBA454 /* Assets.xcassets */,
+				3F67CC822667AE7800BBA454 /* Info.plist */,
+				3F67CC7F2667AE7800BBA454 /* Preview Content */,
+				3FA7066D266917A1000939E4 /* Localizable.strings */,
+				3F9DE7AB267227C7000157CB /* AccountRow.swift */,
+				3F9DE7BB267261F2000157CB /* MeterRow.swift */,
+			);
+			path = MeterReadings;
+			sourceTree = "<group>";
+		};
+		3F67CC7F2667AE7800BBA454 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3F67CC802667AE7800BBA454 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3F67CC8A2667AE7800BBA454 /* MeterReadingsTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F67CC8B2667AE7800BBA454 /* MeterReadingsTests.swift */,
+				3F67CC8D2667AE7800BBA454 /* Info.plist */,
+			);
+			path = MeterReadingsTests;
+			sourceTree = "<group>";
+		};
+		3F67CC952667AE7800BBA454 /* MeterReadingsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3F67CC962667AE7800BBA454 /* MeterReadingsUITests.swift */,
+				3F67CC982667AE7800BBA454 /* Info.plist */,
+			);
+			path = MeterReadingsUITests;
+			sourceTree = "<group>";
+		};
+		3F67CCAA2667B1CE00BBA454 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F67CC752667AE7700BBA454 /* MeterReadings */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F67CC9B2667AE7800BBA454 /* Build configuration list for PBXNativeTarget "MeterReadings" */;
+			buildPhases = (
+				3F67CC722667AE7700BBA454 /* Sources */,
+				3F67CC732667AE7700BBA454 /* Frameworks */,
+				3F67CC742667AE7700BBA454 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeterReadings;
+			packageProductDependencies = (
+				3F9DE79A267222BC000157CB /* MeterReadingsCore */,
+				3F9DE79C267222BF000157CB /* MeterReadingsInfrastructure */,
+				3F0BAB402674ECA800D45B18 /* SwiftUICharts */,
+			);
+			productName = MeterReadings;
+			productReference = 3F67CC762667AE7700BBA454 /* MeterReadings.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3F67CC862667AE7800BBA454 /* MeterReadingsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F67CC9E2667AE7800BBA454 /* Build configuration list for PBXNativeTarget "MeterReadingsTests" */;
+			buildPhases = (
+				3F67CC832667AE7800BBA454 /* Sources */,
+				3F67CC842667AE7800BBA454 /* Frameworks */,
+				3F67CC852667AE7800BBA454 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F67CC892667AE7800BBA454 /* PBXTargetDependency */,
+			);
+			name = MeterReadingsTests;
+			productName = MeterReadingsTests;
+			productReference = 3F67CC872667AE7800BBA454 /* MeterReadingsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3F67CC912667AE7800BBA454 /* MeterReadingsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F67CCA12667AE7800BBA454 /* Build configuration list for PBXNativeTarget "MeterReadingsUITests" */;
+			buildPhases = (
+				3F67CC8E2667AE7800BBA454 /* Sources */,
+				3F67CC8F2667AE7800BBA454 /* Frameworks */,
+				3F67CC902667AE7800BBA454 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F67CC942667AE7800BBA454 /* PBXTargetDependency */,
+			);
+			name = MeterReadingsUITests;
+			productName = MeterReadingsUITests;
+			productReference = 3F67CC922667AE7800BBA454 /* MeterReadingsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F67CC6E2667AE7700BBA454 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					3F67CC752667AE7700BBA454 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					3F67CC862667AE7800BBA454 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 3F67CC752667AE7700BBA454;
+					};
+					3F67CC912667AE7800BBA454 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 3F67CC752667AE7700BBA454;
+					};
+				};
+			};
+			buildConfigurationList = 3F67CC712667AE7700BBA454 /* Build configuration list for PBXProject "MeterReadings" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				de,
+				"en-GB",
+			);
+			mainGroup = 3F67CC6D2667AE7700BBA454;
+			packageReferences = (
+				3F0BAB3F2674ECA800D45B18 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
+			productRefGroup = 3F67CC772667AE7700BBA454 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F67CC752667AE7700BBA454 /* MeterReadings */,
+				3F67CC862667AE7800BBA454 /* MeterReadingsTests */,
+				3F67CC912667AE7800BBA454 /* MeterReadingsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F67CC742667AE7700BBA454 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F67CC812667AE7800BBA454 /* Preview Assets.xcassets in Resources */,
+				3FA7066B266917A1000939E4 /* Localizable.strings in Resources */,
+				3F67CC7E2667AE7800BBA454 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F67CC852667AE7800BBA454 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F67CC902667AE7800BBA454 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F67CC722667AE7700BBA454 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F9DE7BC267261F2000157CB /* MeterRow.swift in Sources */,
+				3F33ABF62668CCFC00B7074E /* MainMenuView.swift in Sources */,
+				3F0BAB3B2674DBC100D45B18 /* EditView.swift in Sources */,
+				3F67CC7A2667AE7700BBA454 /* MeterReadingsApp.swift in Sources */,
+				3FA7064B2668E747000939E4 /* SettingsView.swift in Sources */,
+				3FA706462668E735000939E4 /* ChartView.swift in Sources */,
+				3F9DE7A4267223A1000157CB /* AccountsOverviewView.swift in Sources */,
+				3F9DE7AC267227C7000157CB /* AccountRow.swift in Sources */,
+				3F9DE7B726725E99000157CB /* AccountDetailView.swift in Sources */,
+				3FA7065D26690569000939E4 /* ChartViewModel.swift in Sources */,
+				3FA7066226690572000939E4 /* SettingsViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F67CC832667AE7800BBA454 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F67CC8C2667AE7800BBA454 /* MeterReadingsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F67CC8E2667AE7800BBA454 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F67CC972667AE7800BBA454 /* MeterReadingsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F67CC892667AE7800BBA454 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F67CC752667AE7700BBA454 /* MeterReadings */;
+			targetProxy = 3F67CC882667AE7800BBA454 /* PBXContainerItemProxy */;
+		};
+		3F67CC942667AE7800BBA454 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F67CC752667AE7700BBA454 /* MeterReadings */;
+			targetProxy = 3F67CC932667AE7800BBA454 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3FA7066D266917A1000939E4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3FA7066C266917A1000939E4 /* en */,
+				3FA70671266917A9000939E4 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F67CC992667AE7800BBA454 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3F67CC9A2667AE7800BBA454 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3F67CC9C2667AE7800BBA454 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MeterReadings/Preview Content\"";
+				DEVELOPMENT_TEAM = HTM849653X;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MeterReadings/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.hshl.isd.hfiedler.MeterReadings;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3F67CC9D2667AE7800BBA454 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MeterReadings/Preview Content\"";
+				DEVELOPMENT_TEAM = HTM849653X;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MeterReadings/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.hshl.isd.hfiedler.MeterReadings;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3F67CC9F2667AE7800BBA454 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HTM849653X;
+				INFOPLIST_FILE = MeterReadingsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.hshl.isd.hfiedler.MeterReadingsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeterReadings.app/MeterReadings";
+			};
+			name = Debug;
+		};
+		3F67CCA02667AE7800BBA454 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HTM849653X;
+				INFOPLIST_FILE = MeterReadingsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.hshl.isd.hfiedler.MeterReadingsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeterReadings.app/MeterReadings";
+			};
+			name = Release;
+		};
+		3F67CCA22667AE7800BBA454 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HTM849653X;
+				INFOPLIST_FILE = MeterReadingsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.hshl.isd.hfiedler.MeterReadingsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MeterReadings;
+			};
+			name = Debug;
+		};
+		3F67CCA32667AE7800BBA454 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HTM849653X;
+				INFOPLIST_FILE = MeterReadingsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.hshl.isd.hfiedler.MeterReadingsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MeterReadings;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F67CC712667AE7700BBA454 /* Build configuration list for PBXProject "MeterReadings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F67CC992667AE7800BBA454 /* Debug */,
+				3F67CC9A2667AE7800BBA454 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F67CC9B2667AE7800BBA454 /* Build configuration list for PBXNativeTarget "MeterReadings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F67CC9C2667AE7800BBA454 /* Debug */,
+				3F67CC9D2667AE7800BBA454 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F67CC9E2667AE7800BBA454 /* Build configuration list for PBXNativeTarget "MeterReadingsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F67CC9F2667AE7800BBA454 /* Debug */,
+				3F67CCA02667AE7800BBA454 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F67CCA12667AE7800BBA454 /* Build configuration list for PBXNativeTarget "MeterReadingsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F67CCA22667AE7800BBA454 /* Debug */,
+				3F67CCA32667AE7800BBA454 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3F0BAB3F2674ECA800D45B18 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3F0BAB402674ECA800D45B18 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F0BAB3F2674ECA800D45B18 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+		3F9DE79A267222BC000157CB /* MeterReadingsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MeterReadingsCore;
+		};
+		3F9DE79C267222BF000157CB /* MeterReadingsInfrastructure */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MeterReadingsInfrastructure;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 3F67CC6E2667AE7700BBA454 /* Project object */;
+}
