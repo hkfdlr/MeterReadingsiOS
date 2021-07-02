@@ -9,8 +9,8 @@ import Foundation
 
 public struct MeterReadingEntry: Identifiable, Codable, Equatable {
     public var id: Int64?
-    public let meterNumber: Int
-    public let date: Date
+    public var meterNumber: Int
+    public var date: Date
     public var readingValue: Double
     
     public init(id: Int64?, meterNumber: Int, date: Date = Date(), readingValue: Double) {

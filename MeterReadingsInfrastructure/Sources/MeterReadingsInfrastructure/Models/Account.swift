@@ -13,7 +13,8 @@ import GRDB
 
 extension Account: TableRecord, FetchableRecord, MutablePersistableRecord {
     
-    static let meters = hasMany(Meter.self)
+    
+    static let meters = hasMany(Meter.self, using: Meter.assocAccount)
     
     public func encode(to container: inout PersistenceContainer) {
         container["id"] = id
