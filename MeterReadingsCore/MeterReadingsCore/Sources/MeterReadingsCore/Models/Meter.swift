@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Meter: Identifiable {
+public struct Meter: Identifiable, Equatable {
     public var id: Int64?
     public let meterNumber: Int
     public let accountNumber: Int
@@ -22,6 +22,16 @@ public struct Meter: Identifiable {
         self.title = title
         self.meterReadingEntries = meterReadingEntries
         self.meterType = meterType
+    }
+    
+    public static func == (lhs: Meter, rhs: Meter) -> Bool {
+        return
+            lhs.id == rhs.id &&
+            lhs.meterNumber == rhs.meterNumber &&
+            lhs.accountNumber == rhs.accountNumber &&
+            lhs.title == rhs.title &&
+            lhs.meterType == rhs.meterType &&
+            lhs.meterReadingEntries == rhs.meterReadingEntries
     }
 }
 

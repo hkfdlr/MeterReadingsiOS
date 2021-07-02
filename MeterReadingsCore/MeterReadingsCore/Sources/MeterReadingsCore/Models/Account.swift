@@ -7,7 +7,15 @@
 
 import Foundation
 
-public struct Account: Identifiable {
+public struct Account: Identifiable, Equatable {
+    public static func == (lhs: Account, rhs: Account) -> Bool {
+        return
+            lhs.accountNumber == rhs.accountNumber &&
+            lhs.id == rhs.id &&
+            lhs.title == rhs.title &&
+            lhs.meters == rhs.meters
+    }
+    
     public var id: Int64?
     public var accountNumber: Int
     public var title: String
@@ -26,8 +34,8 @@ public struct Account: Identifiable {
 public extension Account {
     static var data: [Account] {
         [
-            Account(id: 1, accountNumber: 123, title: "Example Account", meters: Meter.data),
-            Account(id: 2, accountNumber: 456, title: "Example Account 2", meters: [])
+//            Account(id: 1, accountNumber: 123, title: "Example Account", meters: Meter.data),
+//            Account(id: 2, accountNumber: 456, title: "Example Account 2", meters: [])
         ]
     }
 }

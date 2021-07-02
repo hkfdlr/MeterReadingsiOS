@@ -12,7 +12,7 @@ import MeterReadingsCore
 struct MeterReadingsApp: App {
     var body: some Scene {
         WindowGroup {
-            MainMenuView(accountsList: .constant(Account.data))
+            MainMenuView()
         }
     }
 }

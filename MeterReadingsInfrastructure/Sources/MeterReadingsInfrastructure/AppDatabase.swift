@@ -85,10 +85,10 @@ extension AppDatabase {
 // MARK: READING
 
 extension AppDatabase {
-    func getAllAccounts() throws {
+    func getAllAccounts(completion: @escaping (Result<[Account], Error>) -> Void) throws {
         try dbReader.read { db in
             let accounts = try Account.fetchAll(db)
-            debugPrint("read accounts ", accounts)
+            completion(.success(accounts))
         }
     }
 }

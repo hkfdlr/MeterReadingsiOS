@@ -9,10 +9,9 @@ import SwiftUI
 import MeterReadingsCore
 
 struct MainMenuView: View {
-    @Binding var accountsList: [Account]
     var body: some View {
         TabView {
-            AccountsOverviewView(accountsList: $accountsList)
+            AccountsOverviewView()
                 .tabItem {
                     ZStack {
                         Image("home")
@@ -37,7 +36,7 @@ struct MainMenuView: View {
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MainMenuView(accountsList: .constant(Account.data))
+            MainMenuView()
                 .previewDevice("iPhone 7")
         }
     }

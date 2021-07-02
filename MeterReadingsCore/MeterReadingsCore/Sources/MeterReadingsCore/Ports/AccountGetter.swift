@@ -11,6 +11,4 @@ public protocol AccountGetter {
     
     func getAccounts(completion: @escaping (Result<[Account], Error>) -> Void) throws
     
-    
-    
 }

@@ -10,7 +10,7 @@ import MeterReadingsCore
 import MeterReadingsInfrastructure
 
 struct AccountsOverviewView: View {
-    @Binding var accountsList: [Account]
+    @State var accountsList: [Account] = []
         
     var account = Account(id: nil, accountNumber: 123123, title: "some account")
     
@@ -38,15 +38,28 @@ struct AccountsOverviewView: View {
                         }
                     }
                 }
-
-                //Needs to be attached to an element in the view, otherwise it's not shown, when showingAlert is true
-
+                Button("Get accounts", action: {
+                    DispatchQueue.main.async {
+                        do {
+                            try getAllAccounts()
+                        } catch {
+                            debugPrint(error)
+                        }
+                    }                    
+                })
             }
             .navigationTitle("MR.READINGS.TITLE")
             .toolbar {
                 Button("Add", action: {
                     showAlert()
                 })
+            }
+        }
+        .onAppear {
+            do {
+                try getAllAccounts()
+            } catch {
+                debugPrint(error)
             }
         }
     }
@@ -90,14 +103,21 @@ struct AccountsOverviewView: View {
     }
     
     func getAllAccounts() throws {
-        try accountGetter.getAccounts {
-            switch $0 {
-            case let .success(value): do {
-                debugPrint("ye? ", value)
-                self.accountsList = value
-            }
-            case let .failure(error): debugPrint(error.localizedDescription)
-            }
+        debugPrint("accountsList before: ", self.$accountsList)
+            try accountGetter.getAccounts {
+                switch $0 {
+                case let .success(value): do {
+                    for elem in value {
+                        debugPrint("processing Account: ", elem)
+                        if (!self.accountsList.contains(elem)) {
+                            let lastIndex = self.accountsList.endIndex
+                            self.accountsList.insert(elem, at: lastIndex)
+                        }
+                    }
+                }
+                case let .failure(error): debugPrint(error.localizedDescription)
+                }
+                debugPrint("accountsList after: ", self.$accountsList)
         }
     }
     
@@ -109,9 +129,11 @@ struct AccountsOverviewView: View {
     }
 }
 
+
+
 struct AccountsOverviewView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountsOverviewView(accountsList: .constant(Account.data))
+        AccountsOverviewView()
             .previewDevice("iPhone 7")
     }
 }
