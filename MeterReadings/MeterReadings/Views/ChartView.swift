@@ -23,13 +23,16 @@ struct ChartView: View {
     
     func convertMeterReadingEntries(meter: Meter) -> [Double] {
         let sortedReadings = meter.meterReadingEntries.sorted {
-            $0.date < $1.date
+            $0.date > $1.date
         }
+
+        debugPrint(meter.meterReadingEntries)
+        debugPrint(sortedReadings)
         var entryValues: [Double] = []
         var entryIndex: Int
         for reading in sortedReadings {
             entryIndex = sortedReadings.firstIndex(where: {
-                $0.id == reading.id
+                $0.meterNumber == reading.meterNumber
             })!
             entryValues.insert(Double(reading.readingValue), at: entryIndex)
         }

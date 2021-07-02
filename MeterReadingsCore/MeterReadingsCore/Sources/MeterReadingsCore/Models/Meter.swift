@@ -8,15 +8,17 @@
 import Foundation
 
 public struct Meter: Identifiable {
-    public var id: UUID
+    public var id: Int64?
     public let meterNumber: Int
+    public let accountNumber: Int
     public var title: String
     public var meterType: MeterType
     public var meterReadingEntries: [MeterReadingEntry]
     
-    public init (id: UUID = UUID(), meterNumber: Int, title: String, meterType: MeterType, meterReadingEntries: [MeterReadingEntry]) {
+    public init (id: Int64?, meterNumber: Int, accountNumber: Int, title: String, meterType: MeterType, meterReadingEntries: [MeterReadingEntry]) {
         self.id = id
         self.meterNumber = meterNumber
+        self.accountNumber = accountNumber
         self.title = title
         self.meterReadingEntries = meterReadingEntries
         self.meterType = meterType
@@ -26,8 +28,8 @@ public struct Meter: Identifiable {
 extension Meter {
     public static var data: [Meter] {
         [
-            Meter(meterNumber: 123, title: "Example Gas", meterType: MeterType.gas, meterReadingEntries: MeterReadingEntry.data),
-            Meter(meterNumber: 456, title: "Example Power", meterType: MeterType.power, meterReadingEntries: [])
+            Meter(id: 1, meterNumber: 123, accountNumber: 123, title: "Example Gas", meterType: MeterType.gas, meterReadingEntries: MeterReadingEntry.data),
+            Meter(id: 2, meterNumber: 456, accountNumber: 123, title: "Example Power", meterType: MeterType.power, meterReadingEntries: [])
         ]
     }
 }

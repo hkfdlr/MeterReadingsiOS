@@ -28,7 +28,7 @@ struct AccountRow: View {
 
 struct AccountRow_Previews: PreviewProvider {
     static var previews: some View {
-        AccountRow(account: Account(id: UUID(), accountNumber: 1 , title: "Testy" , meters: []))
+        AccountRow(account: Account(id: 1, accountNumber: 1 , title: "Testy" , meters: []))
             .previewLayout(.fixed(width: UIScreen.main.bounds.width, height: 60))
     }
 }

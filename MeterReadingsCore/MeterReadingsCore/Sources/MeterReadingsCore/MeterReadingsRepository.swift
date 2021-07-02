@@ -11,7 +11,9 @@ public class MeterReadingsRepository : MeterReadingsRepositoryProtocol {
     
     var meterTypeProvider : MeterTypeProvider
     
-    public init(meterTypeProvider: MeterTypeProvider) {
+    public init(
+        meterTypeProvider: MeterTypeProvider
+        ) {
         self.meterTypeProvider = meterTypeProvider
     }
     
@@ -19,9 +21,5 @@ public class MeterReadingsRepository : MeterReadingsRepositoryProtocol {
         meterTypeProvider.provideMeterTypes() {
             completion($0)
         }
-    }
-    
-    public func getMeterReadingsForAccount(completion: @escaping (Result<[MeterReadingEntry], Error>) -> Void) {
-        debugPrint("TODO")
     }
 }

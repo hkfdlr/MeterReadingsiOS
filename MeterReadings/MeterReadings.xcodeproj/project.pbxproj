@@ -10,11 +10,13 @@
 		3F0BAB3B2674DBC100D45B18 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BAB3A2674DBC100D45B18 /* EditView.swift */; };
 		3F0BAB412674ECA800D45B18 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 3F0BAB402674ECA800D45B18 /* SwiftUICharts */; };
 		3F33ABF62668CCFC00B7074E /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33ABF52668CCFC00B7074E /* MainMenuView.swift */; };
+		3F403ADB268F8085004E8A56 /* NewAccountPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F403ADA268F8085004E8A56 /* NewAccountPopover.swift */; };
 		3F67CC7A2667AE7700BBA454 /* MeterReadingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F67CC792667AE7700BBA454 /* MeterReadingsApp.swift */; };
 		3F67CC7E2667AE7800BBA454 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F67CC7D2667AE7800BBA454 /* Assets.xcassets */; };
 		3F67CC812667AE7800BBA454 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F67CC802667AE7800BBA454 /* Preview Assets.xcassets */; };
 		3F67CC8C2667AE7800BBA454 /* MeterReadingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F67CC8B2667AE7800BBA454 /* MeterReadingsTests.swift */; };
 		3F67CC972667AE7800BBA454 /* MeterReadingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F67CC962667AE7800BBA454 /* MeterReadingsUITests.swift */; };
+		3F88132A268E76F200A503C8 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F881329268E76F200A503C8 /* AlertController.swift */; };
 		3F9DE79B267222BC000157CB /* MeterReadingsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F9DE79A267222BC000157CB /* MeterReadingsCore */; };
 		3F9DE79D267222BF000157CB /* MeterReadingsInfrastructure in Frameworks */ = {isa = PBXBuildFile; productRef = 3F9DE79C267222BF000157CB /* MeterReadingsInfrastructure */; };
 		3F9DE7A4267223A1000157CB /* AccountsOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33ABE62668CB9400B7074E /* AccountsOverviewView.swift */; };
@@ -49,6 +51,7 @@
 		3F0BAB3A2674DBC100D45B18 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		3F33ABE62668CB9400B7074E /* AccountsOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountsOverviewView.swift; path = MeterReadings/Views/AccountsOverviewView.swift; sourceTree = SOURCE_ROOT; };
 		3F33ABF52668CCFC00B7074E /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		3F403ADA268F8085004E8A56 /* NewAccountPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountPopover.swift; sourceTree = "<group>"; };
 		3F67CC762667AE7700BBA454 /* MeterReadings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeterReadings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F67CC792667AE7700BBA454 /* MeterReadingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingsApp.swift; sourceTree = "<group>"; };
 		3F67CC7D2667AE7800BBA454 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		3F67CC922667AE7800BBA454 /* MeterReadingsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeterReadingsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F67CC962667AE7800BBA454 /* MeterReadingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingsUITests.swift; sourceTree = "<group>"; };
 		3F67CC982667AE7800BBA454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F881329268E76F200A503C8 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		3F9DE7AB267227C7000157CB /* AccountRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRow.swift; sourceTree = "<group>"; };
 		3F9DE7B626725E99000157CB /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
 		3F9DE7BB267261F2000157CB /* MeterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterRow.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 		3F33ABE52668CB6800B7074E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3F403ADA268F8085004E8A56 /* NewAccountPopover.swift */,
 				3F33ABF52668CCFC00B7074E /* MainMenuView.swift */,
 				3F33ABE62668CB9400B7074E /* AccountsOverviewView.swift */,
 				3FA706452668E735000939E4 /* ChartView.swift */,
@@ -154,6 +159,7 @@
 				3FA7066D266917A1000939E4 /* Localizable.strings */,
 				3F9DE7AB267227C7000157CB /* AccountRow.swift */,
 				3F9DE7BB267261F2000157CB /* MeterRow.swift */,
+				3F881329268E76F200A503C8 /* AlertController.swift */,
 			);
 			path = MeterReadings;
 			sourceTree = "<group>";
@@ -335,7 +341,9 @@
 				3F33ABF62668CCFC00B7074E /* MainMenuView.swift in Sources */,
 				3F0BAB3B2674DBC100D45B18 /* EditView.swift in Sources */,
 				3F67CC7A2667AE7700BBA454 /* MeterReadingsApp.swift in Sources */,
+				3F88132A268E76F200A503C8 /* AlertController.swift in Sources */,
 				3FA7064B2668E747000939E4 /* SettingsView.swift in Sources */,
+				3F403ADB268F8085004E8A56 /* NewAccountPopover.swift in Sources */,
 				3FA706462668E735000939E4 /* ChartView.swift in Sources */,
 				3F9DE7A4267223A1000157CB /* AccountsOverviewView.swift in Sources */,
 				3F9DE7AC267227C7000157CB /* AccountRow.swift in Sources */,

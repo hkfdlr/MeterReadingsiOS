@@ -23,16 +23,17 @@ struct MeterRow: View {
             HStack {
                 Text(meter.meterNumber.description)
                 Spacer()
-                Text(meter.meterReadingEntries.count.description)
+                Text("Count: " + (meter.meterReadingEntries.count.description))
             }
         }
         .padding(.all, 16)
     }
 }
 
+
 struct MeterRow_Previews: PreviewProvider {
     static var previews: some View {
-        MeterRow(meter: Meter(meterNumber: 321, title: "Example Gas-Meter", meterType: MeterType.gas, meterReadingEntries: []))
+        MeterRow(meter: Meter(id: 1, meterNumber: 321, accountNumber: 333, title: "Example Gas-Meter", meterType: MeterType.gas, meterReadingEntries: []))
             .previewLayout(.fixed(width: UIScreen.main.bounds.width, height: 60))
     }
 }

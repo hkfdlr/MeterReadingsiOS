@@ -10,7 +10,6 @@ import Combine
 import MeterReadingsCore
 
 struct EditView: View {
-    @Binding var accountData: Account.Data
     @State private var accountNumber = ""
     
     var body: some View {

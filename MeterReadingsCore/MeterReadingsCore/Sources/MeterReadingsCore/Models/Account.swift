@@ -8,38 +8,26 @@
 import Foundation
 
 public struct Account: Identifiable {
-    public let id: UUID
-    public let accountNumber: Int
+    public var id: Int64?
+    public var accountNumber: Int
     public var title: String
     public var meters: [Meter]
     
-    public init(id: UUID = UUID(), accountNumber: Int, title: String, meters: [Meter] = []) {
+    public init(id: Int64?, accountNumber: Int, title: String, meters: [Meter] = []) {
         self.id = id
         self.accountNumber = accountNumber
         self.title = title
         self.meters = meters
     }
+    
+    public var description: String { return "Account: \(id ?? 0000), \(accountNumber), \(title), \(meters)" }
 }
 
 public extension Account {
     static var data: [Account] {
         [
-            Account(accountNumber: 123, title: "Example Account", meters: Meter.data)
+            Account(id: 1, accountNumber: 123, title: "Example Account", meters: Meter.data),
+            Account(id: 2, accountNumber: 456, title: "Example Account 2", meters: [])
         ]
     }
-}
-
-public extension Account {
-    struct Data {
-        let accountNumber: Int = 0
-        var title: String = ""
-        var meters: [Meter] = []
-        
-        public init () {}
-    }
-    
-    mutating func update(from data: Data) {
-        title = data.title
-    }
-    
 }
