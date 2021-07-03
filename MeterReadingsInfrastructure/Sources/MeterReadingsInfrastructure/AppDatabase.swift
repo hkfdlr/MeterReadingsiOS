@@ -24,43 +24,42 @@ final class AppDatabase {
     private var migrator: DatabaseMigrator {
         var migrator = DatabaseMigrator()
         
-        #if DEBUG
+//        #if DEBUG
         migrator.eraseDatabaseOnSchemaChange = true
-        #endif
+//        #endif
         
-        migrator.registerMigration("init v1") { db in
+        migrator.registerMigration("init v2") { db in
             try db.create(table: "account") { t in
                 t.autoIncrementedPrimaryKey("id")
                 t.column("title", .text).notNull()
-                t.column("accountNumber", .numeric)
-                    .notNull()
+                t.column("accountNumber", .integer)
+//                    .notNull()
                     .unique()
             }
             
             try db.create(table: "meter") { t in
                 t.autoIncrementedPrimaryKey("id")
                     
-                t.column("meterNumber", .integer)
-                    .notNull()
+                t.column("meterNumber", .numeric)
+//                    .notNull()
                     .unique()
-                t.column("accountNumber", .numeric)
-                    .notNull()
-                    .references("account", column: "accountNumber", onDelete: .cascade)
+                t.column("accountNumber", .integer)
+                    .unique()
+                    .references("account", column: "accountNumber", onDelete: .cascade
+                    )
                 t.column("title", .text)
                 t.column("meterType", .text).notNull()
             }
             
-            try db.create(table: "meterReading") { t in
+            try db.create(table: "meterReadingEntry") { t in
                 t.autoIncrementedPrimaryKey("id")
-                    .notNull()
-                t.column("meterNumber")
-                    .notNull()
+                t.column("meterNumber", .numeric)
+                    .unique()
                     .references("meter", column: "meterNumber", onDelete: .cascade)
                 t.column("date", .date)
                 t.column("readingValue", .integer)
             }
         }
-        
         return migrator
     }
 }
@@ -76,12 +75,11 @@ extension AppDatabase {
     
     func deleteAccount(account: Account) throws {
         try dbWriter.write { db in
-            _ = try Account.deleteOne(db, key: ["accountNumber": account.accountNumber])
+            _ = try Account.deleteOne(db, key: account.id)
         }
     }
     
     func saveMeter(_ meter: inout Meter) throws {
-        debugPrint("writing meter: ", meter)
         try dbWriter.write { db in
             try meter.save(db)
         }
@@ -107,14 +105,13 @@ extension AppDatabase {
     func getAllMeters(accountNumber: Int ,completion: @escaping (Result<[Meter], Error>) -> Void) throws {
         try dbReader.read { db in
             let meters = try Meter.fetchAll(db, sql: "SELECT * FROM meter WHERE accountNumber == \(accountNumber)")
-            debugPrint("read meters: ", meters)
             completion(.success(meters))
         }
     }
     
-    func getAllReadings(completion: @escaping (Result<[MeterReadingEntry], Error>) -> Void) throws {
+    func getAllReadings(meterNumber: Int ,completion: @escaping (Result<[MeterReadingEntry], Error>) -> Void) throws {
         try dbReader.read { db in
-            let readings = try MeterReadingEntry.fetchAll(db)
+            let readings = try MeterReadingEntry.fetchAll(db, sql: "SELECT * FROM meterReadingEntry WHERE meterNumber == \(meterNumber)")
             completion(.success(readings))
         }
     }

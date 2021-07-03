@@ -9,8 +9,8 @@ import Foundation
 
 public struct Meter: Identifiable, Equatable {
     public var id: Int64?
-    public let meterNumber: Int
-    public let accountNumber: Int
+    public var meterNumber: Int
+    public var accountNumber: Int
     public var title: String
     public var meterType: MeterType
     public var meterReadingEntries: [MeterReadingEntry]
@@ -30,8 +30,7 @@ public struct Meter: Identifiable, Equatable {
             lhs.meterNumber == rhs.meterNumber &&
             lhs.accountNumber == rhs.accountNumber &&
             lhs.title == rhs.title &&
-            lhs.meterType == rhs.meterType &&
-            lhs.meterReadingEntries == rhs.meterReadingEntries
+            lhs.meterType == rhs.meterType
     }
 }
 

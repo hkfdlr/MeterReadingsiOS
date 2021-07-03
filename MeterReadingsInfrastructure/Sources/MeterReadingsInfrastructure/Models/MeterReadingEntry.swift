@@ -11,12 +11,12 @@ import GRDB
 
 extension MeterReadingEntry: TableRecord, FetchableRecord, MutablePersistableRecord {
     
+    static let assocMeter = ForeignKey(["meterNumber"])
     static let meter = belongsTo(Meter.self)
     
     public init(row: Row) {
         self.init(id: nil, meterNumber: 0, date: Date(), readingValue: 0)
         id = row["id"]
-        meterNumber = row["meterNumber"]
         date = row["date"]
         readingValue = row["readingValue"]
     }

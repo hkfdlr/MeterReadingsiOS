@@ -25,12 +25,12 @@ struct AccountDetailView: View {
             List {
                 ForEach(meterList) {
                     meter in
-                    NavigationLink(destination: ChartView(meter: binding(for: meter))) {
+                    NavigationLink(destination: ChartView(meter: binding(for: meter), sheetEnteredValue: 0, sheetPickedDate: Date(), readingData: [])) {
                         MeterRow(meter: meter)
                     }
                 }
             }
-            .navigationBarTitle(account.title)
+            .navigationBarTitle(self.account.title)
             .toolbar(content: {
                 Button("Add", action: {
                     showAlert()
@@ -114,7 +114,6 @@ struct AccountDetailView: View {
         try meterGetter.getMeters(accountNumber: accountNumber) {
             switch $0 {
             case let .success(meters): do {
-                debugPrint("got meters: ", meters)
                 for elem in meters {
                     if (!self.meterList.contains(elem)) {
                         let lastIndex = self.meterList.endIndex

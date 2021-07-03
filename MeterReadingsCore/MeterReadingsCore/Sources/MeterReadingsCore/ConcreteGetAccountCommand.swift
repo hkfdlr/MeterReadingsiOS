@@ -16,9 +16,7 @@ public class ConcreteGetAccountCommand : GetAccountCommand {
     }
     
     public func getAccounts(completion: @escaping (Result<[Account], Error>) -> Void) throws {
-        debugPrint("getting accounts... ")
         try accountGetter.getAccounts() {
-            debugPrint("ConcreteGetAccountCommand: ", $0)
             completion($0)
         }
         

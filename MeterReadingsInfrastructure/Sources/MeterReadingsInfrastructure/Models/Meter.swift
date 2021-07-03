@@ -13,6 +13,8 @@ extension Meter: TableRecord, FetchableRecord, MutablePersistableRecord {
 
     static let assocAccount = ForeignKey(["accountNumber"])
     static let account = belongsTo(Account.self, using: assocAccount)
+    
+    static let meterReadingEntries = hasMany(MeterReadingEntry.self, using: MeterReadingEntry.assocMeter)
         
     var meterTypeAsString: String {
         return meterType.rawValue.description
@@ -22,6 +24,10 @@ extension Meter: TableRecord, FetchableRecord, MutablePersistableRecord {
         self.init(id: nil, meterNumber: 0, accountNumber: 0, title: "", meterType: MeterType.power, meterReadingEntries: [])
         id = row["id"]
         title = row["title"]
+        accountNumber = row["accountNumber"]
+        meterNumber = row["meterNumber"]
+        meterType = MeterType(rawValue: row["meterType"]) ?? meterType
+        
     }
     
     public func encode(to container: inout PersistenceContainer) {

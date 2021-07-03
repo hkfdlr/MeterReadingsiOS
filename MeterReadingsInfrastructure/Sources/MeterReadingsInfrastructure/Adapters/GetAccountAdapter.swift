@@ -14,7 +14,6 @@ public class GetAccountAdapter: AccountGetter {
     
     public func getAccounts(completion: @escaping (Result<[Account], Error>) -> Void) throws {
         try AppDatabase.shared.getAllAccounts() {
-            debugPrint("GetAccountAdapter: ", $0)
             completion($0)
         }
     }

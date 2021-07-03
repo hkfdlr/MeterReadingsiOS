@@ -28,13 +28,15 @@ struct AccountsOverviewView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(accountsList) {
+                ForEach(accountsList, content: {
                     account in
                     NavigationLink(destination:AccountDetailView(account: binding(for: account), meterList: account.meters)) {
                         AccountRow(account: account)
                     }
-                }
-                .onDelete(perform: deleteAccount)
+                })
+                .onDelete(perform: {
+                    deleteAccount(at: $0)
+                })
             }
             
             .navigationTitle("MR.READINGS.TITLE")
@@ -45,6 +47,7 @@ struct AccountsOverviewView: View {
             }
         }
         .onAppear {
+            
             do {
                 try getAllAccounts()
             } catch {
@@ -92,11 +95,11 @@ struct AccountsOverviewView: View {
     }
     
     func deleteAccount(at index: IndexSet) {
-        let accountToDelete = index.map {
-            self.$accountsList[$0]
-        }
+        guard let index = index.first else { return }
+        debugPrint("before: ", accountsList, index)
+        let accountToDelete = accountsList[index]
         do {
-            try accountDeleter.deleteAccount(account: accountToDelete[0].wrappedValue) {
+            try accountDeleter.deleteAccount(account: accountToDelete) {
                 switch $0 {
                 case let .success(value): debugPrint(value)
                 case let .failure(error): debugPrint(error)
@@ -105,16 +108,14 @@ struct AccountsOverviewView: View {
         } catch {
             debugPrint(error)
         }
-        accountsList.remove(atOffsets: index)
+        accountsList.remove(at: index)
     }
     
     func getAllAccounts() throws {
-        debugPrint("accountsList before: ", self.$accountsList)
         try accountGetter.getAccounts {
             switch $0 {
             case let .success(value): do {
                 for elem in value {
-                    debugPrint("processing Account: ", elem)
                     if (!self.accountsList.contains(elem)) {
                         let lastIndex = self.accountsList.endIndex
                         self.accountsList.insert(elem, at: lastIndex)
@@ -123,7 +124,6 @@ struct AccountsOverviewView: View {
             }
             case let .failure(error): debugPrint(error.localizedDescription)
             }
-            debugPrint("accountsList after: ", self.$accountsList)
         }
         try getMetersForAccounts()
     }
@@ -133,17 +133,15 @@ struct AccountsOverviewView: View {
             try meterGetter.getMeters(accountNumber: elem.accountNumber) {
                 switch $0 {
                 case let .success(meters): do {
-                    updateMeters(acc: elem, meters: meters)
+                    let i = self.accountsList.firstIndex(of: elem)
+                    if (i != nil) {
+                        self.accountsList[i!].meters = meters
+                    }
                 }
                 case let .failure(error): debugPrint(error.localizedDescription)
                 }
             }
         }
-    }
-    
-    func updateMeters(acc: Account, meters: [Meter]) {
-        let i = accountsList.firstIndex(of: acc)
-        accountsList[i!].meters.append(contentsOf: meters)
     }
     
     private func binding(for account: Account) -> Binding<Account> {

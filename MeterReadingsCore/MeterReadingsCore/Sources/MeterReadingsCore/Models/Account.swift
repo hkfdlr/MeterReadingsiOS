@@ -12,8 +12,7 @@ public struct Account: Identifiable, Equatable {
         return
             lhs.accountNumber == rhs.accountNumber &&
             lhs.id == rhs.id &&
-            lhs.title == rhs.title &&
-            lhs.meters == rhs.meters
+            lhs.title == rhs.title
     }
     
     public var id: Int64?
