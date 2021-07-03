@@ -14,6 +14,10 @@ extension Meter: TableRecord, FetchableRecord, MutablePersistableRecord {
     static let assocAccount = ForeignKey(["accountNumber"])
     static let account = belongsTo(Account.self, using: assocAccount)
         
+    var meterTypeAsString: String {
+        return meterType.rawValue.description
+    }
+    
     public init(row: Row) {
         self.init(id: nil, meterNumber: 0, accountNumber: 0, title: "", meterType: MeterType.power, meterReadingEntries: [])
         id = row["id"]

@@ -23,7 +23,7 @@ struct MeterRow: View {
             HStack {
                 Text(meter.meterNumber.description)
                 Spacer()
-                Text("Count: " + (meter.meterReadingEntries.count.description))
+                Text("Readings: " + (meter.meterReadingEntries.count.description))
             }
         }
         .padding(.all, 16)

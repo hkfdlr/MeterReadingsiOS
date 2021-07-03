@@ -38,6 +38,14 @@ struct ChartView: View {
         }
         return entryValues
     }
+    
+    func saveReading(reading: inout MeterReadingEntry) throws {
+        
+    }
+    
+    func getAllReadings(meterNumber: Int) throws {
+        
+    }
 }
 
 struct ChartView_Previews: PreviewProvider {

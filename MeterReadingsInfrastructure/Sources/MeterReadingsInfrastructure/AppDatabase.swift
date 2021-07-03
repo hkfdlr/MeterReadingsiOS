@@ -42,6 +42,7 @@ final class AppDatabase {
                     
                 t.column("meterNumber", .integer)
                     .notNull()
+                    .unique()
                 t.column("accountNumber", .numeric)
                     .notNull()
                     .references("account", column: "accountNumber", onDelete: .cascade)
@@ -54,7 +55,7 @@ final class AppDatabase {
                     .notNull()
                 t.column("meterNumber")
                     .notNull()
-                    .references("meter", onDelete: .cascade)
+                    .references("meter", column: "meterNumber", onDelete: .cascade)
                 t.column("date", .date)
                 t.column("readingValue", .integer)
             }
@@ -73,9 +74,9 @@ extension AppDatabase {
         }
     }
     
-    func deleteAccount(id: Int64) throws {
+    func deleteAccount(account: Account) throws {
         try dbWriter.write { db in
-            _ = try Account.deleteOne(db, key: id)
+            _ = try Account.deleteOne(db, key: ["accountNumber": account.accountNumber])
         }
     }
     
@@ -106,6 +107,7 @@ extension AppDatabase {
     func getAllMeters(accountNumber: Int ,completion: @escaping (Result<[Meter], Error>) -> Void) throws {
         try dbReader.read { db in
             let meters = try Meter.fetchAll(db, sql: "SELECT * FROM meter WHERE accountNumber == \(accountNumber)")
+            debugPrint("read meters: ", meters)
             completion(.success(meters))
         }
     }

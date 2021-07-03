@@ -11,30 +11,37 @@ import MeterReadingsInfrastructure
 struct AccountDetailView: View {
     @Binding var account: Account
     @State var meterList: [Meter]
-    
+            
     let meterSaver = ConcreteSaveMeterCommand(meterSaver: SaveMeterAdapter())
     let meterGetter = ConcreteGetMeterCommand(meterGetter: GetMeterAdapter())
-        
+    var pickedMeterType = MeterType.power
+
+    @State private var showingAlert = false
+    @State private var selectedType: MeterType = MeterType.power
+
     var body: some View {
-        List {
-            ForEach(meterList) {
-                meter in
-                NavigationLink(destination: ChartView(meter: binding(for: meter))) {
-                    MeterRow(meter: meter)
+                        
+        VStack {
+            List {
+                ForEach(meterList) {
+                    meter in
+                    NavigationLink(destination: ChartView(meter: binding(for: meter))) {
+                        MeterRow(meter: meter)
+                    }
                 }
             }
-        }
-        .navigationBarTitle(account.title)
-        .toolbar(content: {
-            Button("Add", action: {
-                showAlert()
+            .navigationBarTitle(account.title)
+            .toolbar(content: {
+                Button("Add", action: {
+                    showAlert()
+                })
             })
-        })
-        .onAppear {
-            do {
-                try getAllMeters(accountNumber: account.accountNumber)
-            } catch {
-                debugPrint(error)
+            .onAppear {
+                do {
+                    try getAllMeters(accountNumber: account.accountNumber)
+                } catch {
+                    debugPrint(error)
+                }
             }
         }
     }
@@ -47,7 +54,7 @@ struct AccountDetailView: View {
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: "Add Meter", message: "Please enter a name for the meter, its meter number and a reading value", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add Meter", message: "Please enter a name for the meter, its meter number and a reading value \n\n\n\n\n\n", preferredStyle: .alert)
         
         alert.addTextField { meterTitle in
             meterTitle.text = ""
@@ -58,17 +65,26 @@ struct AccountDetailView: View {
             meterNo.text = ""
             meterNo.placeholder = "Meter number"
         }
-        alert.addTextField { readingValue in
-            readingValue.text = ""
-            readingValue.placeholder = "Reading Value"
-            readingValue.keyboardType = UIKeyboardType.numberPad
-        }
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive) { _ in
+        let pickerView = TypePickerView(selectedType: $selectedType)
+        let pickerHost = UIHostingController(rootView: pickerView)
+        
+        let frame = CGRect(x: -60
+                           , y: 85
+                           
+                           , width: UIScreen.main.bounds.width
+                           , height: 100)
+        
+        pickerHost.view.frame = frame
+        pickerHost.view.backgroundColor = UIColor(white: 1, alpha: 0
+        )
+        alert.view.addSubview(pickerHost.view)
 
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive) { _ in
+            
         })
         alert.addAction(UIAlertAction(title: "Submit", style: .default) { _ in
-            var newMeter = Meter(id: nil, meterNumber: Int(alert.textFields![1].text!)!, accountNumber: account.accountNumber, title: alert.textFields![0].text!, meterType: MeterType.power /* TODO */, meterReadingEntries: [])
+            var newMeter = Meter(id: nil, meterNumber: Int(alert.textFields![1].text!) ?? -1, accountNumber: account.accountNumber, title: alert.textFields![0].text ?? "", meterType: selectedType /* TODO */, meterReadingEntries: [])
             do {
                 try saveMeter(meter: &newMeter)
                 try getAllMeters(accountNumber: account.accountNumber)
@@ -76,8 +92,12 @@ struct AccountDetailView: View {
                 debugPrint(error)
             }
         })
-
+        
         UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
+    }
+    
+    mutating func setPicker(type: MeterType) {
+         pickedMeterType = type
     }
     
     func saveMeter(meter: inout Meter) throws {
@@ -94,6 +114,7 @@ struct AccountDetailView: View {
         try meterGetter.getMeters(accountNumber: accountNumber) {
             switch $0 {
             case let .success(meters): do {
+                debugPrint("got meters: ", meters)
                 for elem in meters {
                     if (!self.meterList.contains(elem)) {
                         let lastIndex = self.meterList.endIndex

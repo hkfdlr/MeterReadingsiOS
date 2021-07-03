@@ -17,9 +17,9 @@ struct AccountRow: View {
                 .font(.headline)
             Spacer()
             HStack {
-                Label("\(account.accountNumber.description)", systemImage: "")
+                Text(account.accountNumber.description)
                 Spacer()
-                Label("\(account.meters.count.description)", systemImage: "")
+                Text("Meters: " + account.meters.count.description)
             }
         }
         .padding(.all, 16)
