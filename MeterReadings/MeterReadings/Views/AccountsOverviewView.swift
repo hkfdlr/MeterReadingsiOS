@@ -142,6 +142,13 @@ struct AccountsOverviewView: View {
             }
         }
     }
+    
+    private func binding(for account: Account) -> Binding<Account> {
+        guard let accountIndex = accountsList.firstIndex(where: { $0.accountNumber == account.accountNumber }) else {
+            fatalError("Can't find account in array")
+        }
+        return $accountsList[accountIndex]
+    }
 }
 
 

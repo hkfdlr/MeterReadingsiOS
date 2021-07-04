@@ -120,3 +120,9 @@ struct AccountDetailView: View {
     }
 }
 
+struct AccountDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        AccountDetailView(account: Account(id: nil, accountNumber: 123, title: "asd"), meterList: Meter.data
+        )
+    }
+}
