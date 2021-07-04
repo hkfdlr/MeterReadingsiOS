@@ -11,7 +11,7 @@ import MeterReadingsInfrastructure
 
 struct AccountsOverviewView: View {
     @State var accountsList: [Account] = []
-        
+    
     @State var enteredAccountTitle = ""
     @State var enteredAccountNumber = ""
     
@@ -19,18 +19,17 @@ struct AccountsOverviewView: View {
     let accountGetter = ConcreteGetAccountCommand(accountGetter: GetAccountAdapter())
     let accountDeleter = ConcreteDeleteAccountCommand(accountDeleter: DeleteAccountAdapter())
     let meterGetter = ConcreteGetMeterCommand(meterGetter: GetMeterAdapter())
-
     
     @State var meterTypes: [MeterType] = []
     @State var selectedMeterType: MeterType = MeterType.power
     @State private var showingAlert = false
-    
+        
     var body: some View {
         NavigationView {
             List {
                 ForEach(accountsList, content: {
                     account in
-                    NavigationLink(destination:AccountDetailView(account: binding(for: account), meterList: account.meters)) {
+                    NavigationLink(destination:AccountDetailView(account: account)) {
                         AccountRow(account: account)
                     }
                 })
@@ -142,13 +141,6 @@ struct AccountsOverviewView: View {
                 }
             }
         }
-    }
-    
-    private func binding(for account: Account) -> Binding<Account> {
-        guard let accountIndex = accountsList.firstIndex(where: { $0.accountNumber == account.accountNumber }) else {
-            fatalError("Can't find account in array")
-        }
-        return $accountsList[accountIndex]
     }
 }
 

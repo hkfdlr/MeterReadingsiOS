@@ -9,8 +9,8 @@ import MeterReadingsCore
 import MeterReadingsInfrastructure
 
 struct AccountDetailView: View {
-    @Binding var account: Account
-    @State var meterList: [Meter]
+    @State var account: Account
+    @State var meterList: [Meter] = []
             
     let meterSaver = ConcreteSaveMeterCommand(meterSaver: SaveMeterAdapter())
     let meterGetter = ConcreteGetMeterCommand(meterGetter: GetMeterAdapter())
@@ -25,7 +25,7 @@ struct AccountDetailView: View {
             List {
                 ForEach(meterList) {
                     meter in
-                    NavigationLink(destination: ChartView(meter: binding(for: meter), sheetEnteredValue: 0, sheetPickedDate: Date(), readingData: [])) {
+                    NavigationLink(destination: ChartView(meter: meter, sheetEnteredValue: 0, sheetPickedDate: Date(), readingData: [])) {
                         MeterRow(meter: meter)
                     }
                 }
@@ -44,13 +44,6 @@ struct AccountDetailView: View {
                 }
             }
         }
-    }
-    
-    private func binding(for meter: Meter) -> Binding<Meter> {
-        guard let meterIndex = meterList.firstIndex(where: { $0.meterNumber == meter.meterNumber }) else {
-            fatalError("Can't find meter in array")
-        }
-        return $meterList[meterIndex]
     }
     
     func showAlert() {
@@ -127,9 +120,3 @@ struct AccountDetailView: View {
     }
 }
 
-struct AccountDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountDetailView(account: .constant(Account.data[0]), meterList: Meter.data
-        )
-    }
-}

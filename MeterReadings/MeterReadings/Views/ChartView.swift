@@ -11,7 +11,7 @@ import MeterReadingsCore
 import MeterReadingsInfrastructure
 
 struct ChartView: View {
-    @Binding var meter: Meter
+    @State var meter: Meter
     @State var showSheet: Bool = false
     var selectedChartIndex = 0
     
@@ -117,6 +117,6 @@ struct ChartView: View {
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ChartView(meter: .constant(Account.data[0].meters[0]), sheetEnteredValue: 0, sheetPickedDate: Date())
+        ChartView(meter: Meter(id: nil, meterNumber: 123, accountNumber: 123, title: "asd", meterType: MeterType.power, meterReadingEntries: []), sheetEnteredValue: 0, sheetPickedDate: Date())
     }
 }
