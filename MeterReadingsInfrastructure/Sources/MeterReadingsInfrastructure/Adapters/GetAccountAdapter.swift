@@ -17,6 +17,4 @@ public class GetAccountAdapter: AccountGetter {
             completion($0)
         }
     }
-    
-    
 }

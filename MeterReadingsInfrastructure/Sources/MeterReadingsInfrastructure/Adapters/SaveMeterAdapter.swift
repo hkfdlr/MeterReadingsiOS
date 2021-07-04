@@ -13,6 +13,8 @@ public class SaveMeterAdapter: MeterSaver {
     public init() { }
     
     public func saveMeter(meter: inout Meter, completion: @escaping (Result<String, Error>) -> Void) throws {
-        try AppDatabase.shared.saveMeter(&meter)
+        try AppDatabase.shared.saveMeter(&meter) {
+            completion($0)
+        }
     }
 }

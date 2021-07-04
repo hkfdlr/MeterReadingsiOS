@@ -13,6 +13,8 @@ public class SaveReadingAdapter: ReadingSaver {
     public init () {}
     
     public func saveReading(reading: inout MeterReadingEntry, completion: @escaping (Result<String, Error>) -> Void) throws {
-        try AppDatabase.shared.saveMeterReading(&reading)
+        try AppDatabase.shared.saveMeterReading(&reading) {
+            completion($0)
+        }
     }
 }

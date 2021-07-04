@@ -13,6 +13,8 @@ public class DeleteAccountAdapter: AccountDeleter {
     public init () {}
     
     public func deleteAccount(account: Account, completion: @escaping (Result<String, Error>) -> Void ) throws {
-        try AppDatabase.shared.deleteAccount(account: account)
+        try AppDatabase.shared.deleteAccount(account: account) {
+            completion($0)
+        }
     }
 }

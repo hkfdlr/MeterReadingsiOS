@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3F0BAB3B2674DBC100D45B18 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BAB3A2674DBC100D45B18 /* EditView.swift */; };
 		3F0BAB412674ECA800D45B18 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 3F0BAB402674ECA800D45B18 /* SwiftUICharts */; };
+		3F167E2B2691F2E4001534CA /* AccountsOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F167E2A2691F2E4001534CA /* AccountsOverviewViewModel.swift */; };
+		3F167E332691F554001534CA /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F167E322691F554001534CA /* AccountDetailViewModel.swift */; };
+		3F167E382691FAEA001534CA /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F167E372691FAEA001534CA /* ChartViewModel.swift */; };
 		3F1BA032269080AD004386D6 /* TypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BA031269080AD004386D6 /* TypePickerView.swift */; };
 		3F1BA03F2690BBB7004386D6 /* AddEntrySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BA03E2690BBB7004386D6 /* AddEntrySheet.swift */; };
 		3F33ABF62668CCFC00B7074E /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33ABF52668CCFC00B7074E /* MainMenuView.swift */; };
@@ -26,8 +29,6 @@
 		3F9DE7BC267261F2000157CB /* MeterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DE7BB267261F2000157CB /* MeterRow.swift */; };
 		3FA706462668E735000939E4 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA706452668E735000939E4 /* ChartView.swift */; };
 		3FA7064B2668E747000939E4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA7064A2668E747000939E4 /* SettingsView.swift */; };
-		3FA7065D26690569000939E4 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA7065C26690569000939E4 /* ChartViewModel.swift */; };
-		3FA7066226690572000939E4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA7066126690572000939E4 /* SettingsViewModel.swift */; };
 		3FA7066B266917A1000939E4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FA7066D266917A1000939E4 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,9 @@
 
 /* Begin PBXFileReference section */
 		3F0BAB3A2674DBC100D45B18 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		3F167E2A2691F2E4001534CA /* AccountsOverviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsOverviewViewModel.swift; sourceTree = "<group>"; };
+		3F167E322691F554001534CA /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
+		3F167E372691FAEA001534CA /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
 		3F1BA031269080AD004386D6 /* TypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePickerView.swift; sourceTree = "<group>"; };
 		3F1BA03E2690BBB7004386D6 /* AddEntrySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntrySheet.swift; sourceTree = "<group>"; };
 		3F33ABE62668CB9400B7074E /* AccountsOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountsOverviewView.swift; path = MeterReadings/Views/AccountsOverviewView.swift; sourceTree = SOURCE_ROOT; };
@@ -71,8 +75,6 @@
 		3F9DE7BB267261F2000157CB /* MeterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterRow.swift; sourceTree = "<group>"; };
 		3FA706452668E735000939E4 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		3FA7064A2668E747000939E4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		3FA7065C26690569000939E4 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
-		3FA7066126690572000939E4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3FA7066C266917A1000939E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3FA70671266917A9000939E4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,8 +126,9 @@
 		3F33ABEB2668CBCF00B7074E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				3FA7065C26690569000939E4 /* ChartViewModel.swift */,
-				3FA7066126690572000939E4 /* SettingsViewModel.swift */,
+				3F167E2A2691F2E4001534CA /* AccountsOverviewViewModel.swift */,
+				3F167E322691F554001534CA /* AccountDetailViewModel.swift */,
+				3F167E372691FAEA001534CA /* ChartViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -346,14 +349,15 @@
 				3F0BAB3B2674DBC100D45B18 /* EditView.swift in Sources */,
 				3F67CC7A2667AE7700BBA454 /* MeterReadingsApp.swift in Sources */,
 				3FA7064B2668E747000939E4 /* SettingsView.swift in Sources */,
+				3F167E382691FAEA001534CA /* ChartViewModel.swift in Sources */,
 				3F403ADB268F8085004E8A56 /* NewAccountPopover.swift in Sources */,
 				3F1BA032269080AD004386D6 /* TypePickerView.swift in Sources */,
 				3FA706462668E735000939E4 /* ChartView.swift in Sources */,
 				3F9DE7A4267223A1000157CB /* AccountsOverviewView.swift in Sources */,
+				3F167E2B2691F2E4001534CA /* AccountsOverviewViewModel.swift in Sources */,
 				3F9DE7AC267227C7000157CB /* AccountRow.swift in Sources */,
 				3F9DE7B726725E99000157CB /* AccountDetailView.swift in Sources */,
-				3FA7065D26690569000939E4 /* ChartViewModel.swift in Sources */,
-				3FA7066226690572000939E4 /* SettingsViewModel.swift in Sources */,
+				3F167E332691F554001534CA /* AccountDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

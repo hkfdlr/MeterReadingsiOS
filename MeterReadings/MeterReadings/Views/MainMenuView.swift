@@ -12,6 +12,7 @@ struct MainMenuView: View {
     var body: some View {
         TabView {
             AccountsOverviewView()
+                .environmentObject(AccountsOverviewViewModel())
                 .tabItem {
                     ZStack {
                         Image("home")
@@ -21,7 +22,6 @@ struct MainMenuView: View {
                     Text("Home")
                 }
             SettingsView()
-                .environmentObject(SettingsViewModel())
                 .tabItem {
                     Image("settings")
                         .resizable()

@@ -53,6 +53,14 @@ class MockMeterGetter: MeterGetter {
     }
 }
 
+class MockMeterDeleter: MeterDeleter {
+    func deleteMeter(meter: Meter, completion: @escaping (Result<String, Error>) -> Void) throws {
+        if meter == Meter(id: 1, meterNumber: 123, accountNumber: 123, title: "Title", meterType: MeterType.power, meterReadingEntries: []) {
+            completion(.success("Meter deleted"))
+        }
+    }
+}
+
 // MARK: Reading Mocks
 
 class MockReadingSaver: ReadingSaver {
@@ -166,6 +174,22 @@ final class MeterTests: XCTestCase {
             try getMeterCommand.getMeters(accountNumber: 321) {
                 switch $0 {
                 case let .success(meters): XCTAssertEqual(correctMeters, meters)
+                case let .failure(error): XCTFail(error.localizedDescription)
+                }
+            }
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testDeleteMeter() {
+        let deleteMeterCommand = ConcreteDeleteMeterCommand(meterDeleter: MockMeterDeleter())
+        let meterToDelete = Meter(id: 1, meterNumber: 123, accountNumber: 123, title: "Title", meterType: MeterType.power, meterReadingEntries: [])
+        
+        do {
+            try deleteMeterCommand.deleteMeter(meter: meterToDelete) {
+                switch $0 {
+                case let .success(value): XCTAssertEqual(value, "Meter deleted")
                 case let .failure(error): XCTFail(error.localizedDescription)
                 }
             }

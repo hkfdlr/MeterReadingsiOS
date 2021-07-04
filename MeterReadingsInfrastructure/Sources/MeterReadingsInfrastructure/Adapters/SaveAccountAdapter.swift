@@ -14,6 +14,8 @@ public class SaveAccountAdapter: AccountSaver {
     public init() { }
    
     public func saveAccount(account: inout Account, completion: @escaping (Result<String, Error>) -> Void) throws {
-        try AppDatabase.shared.saveAccount(&account)
+        try AppDatabase.shared.saveAccount(&account) {
+            completion($0)
+        }
     }
 }

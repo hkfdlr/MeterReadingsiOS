@@ -9,28 +9,29 @@ import MeterReadingsCore
 import MeterReadingsInfrastructure
 
 struct AccountDetailView: View {
-    @State var account: Account
-    @State var meterList: [Meter] = []
-            
-    let meterSaver = ConcreteSaveMeterCommand(meterSaver: SaveMeterAdapter())
-    let meterGetter = ConcreteGetMeterCommand(meterGetter: GetMeterAdapter())
-    var pickedMeterType = MeterType.power
-
+    @EnvironmentObject var viewModel: AccountDetailViewModel
+    
     @State private var showingAlert = false
     @State private var selectedType: MeterType = MeterType.power
+    
+    var pickedMeterType = MeterType.power
 
     var body: some View {
                         
         VStack {
             List {
-                ForEach(meterList) {
+                ForEach(viewModel.meterList) {
                     meter in
-                    NavigationLink(destination: ChartView(meter: meter, sheetEnteredValue: 0, sheetPickedDate: Date(), readingData: [])) {
+                    NavigationLink(destination: ChartView()
+                                    .environmentObject(ChartViewModel(meter: meter))) {
                         MeterRow(meter: meter)
                     }
                 }
+                .onDelete(perform: {
+                    viewModel.deleteMeter(at: $0)
+                })
             }
-            .navigationBarTitle(self.account.title)
+            .navigationBarTitle(viewModel.account.title)
             .toolbar(content: {
                 Button("Add", action: {
                     showAlert()
@@ -38,7 +39,7 @@ struct AccountDetailView: View {
             })
             .onAppear {
                 do {
-                    try getAllMeters(accountNumber: account.accountNumber)
+                    try viewModel.getAllMeters(accountNumber: viewModel.account.accountNumber)
                 } catch {
                     debugPrint(error)
                 }
@@ -77,10 +78,10 @@ struct AccountDetailView: View {
             
         })
         alert.addAction(UIAlertAction(title: "Submit", style: .default) { _ in
-            var newMeter = Meter(id: nil, meterNumber: Int(alert.textFields![1].text!) ?? -1, accountNumber: account.accountNumber, title: alert.textFields![0].text ?? "", meterType: selectedType /* TODO */, meterReadingEntries: [])
+            var newMeter = Meter(id: nil, meterNumber: Int(alert.textFields![1].text!) ?? -1, accountNumber: viewModel.account.accountNumber, title: alert.textFields![0].text ?? "", meterType: selectedType /* TODO */, meterReadingEntries: [])
             do {
-                try saveMeter(meter: &newMeter)
-                try getAllMeters(accountNumber: account.accountNumber)
+                try viewModel.saveMeter(meter: &newMeter)
+                try viewModel.getAllMeters(accountNumber: viewModel.account.accountNumber)
             } catch {
                 debugPrint(error)
             }
@@ -92,37 +93,12 @@ struct AccountDetailView: View {
     mutating func setPicker(type: MeterType) {
          pickedMeterType = type
     }
-    
-    func saveMeter(meter: inout Meter) throws {
-        try meterSaver.saveMeter(meter: &meter) {
-            switch $0 {
-            case let .success(value): debugPrint(value)
-            case let .failure(error): debugPrint(error.localizedDescription)
-            }
-        }
-        try getAllMeters(accountNumber: account.accountNumber)
-    }
-    
-    func getAllMeters(accountNumber: Int) throws {
-        try meterGetter.getMeters(accountNumber: accountNumber) {
-            switch $0 {
-            case let .success(meters): do {
-                for elem in meters {
-                    if (!self.meterList.contains(elem)) {
-                        let lastIndex = self.meterList.endIndex
-                        self.meterList.insert(elem, at: lastIndex)
-                    }
-                }
-            }
-            case let .failure(error): debugPrint(error.localizedDescription)
-            }
-        }
-    }
 }
 
 struct AccountDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountDetailView(account: Account(id: nil, accountNumber: 123, title: "asd"), meterList: Meter.data
+        AccountDetailView()
+            .environmentObject(AccountDetailViewModel(account: Account(id: nil, accountNumber: 123, title: "asd"))
         )
     }
 }

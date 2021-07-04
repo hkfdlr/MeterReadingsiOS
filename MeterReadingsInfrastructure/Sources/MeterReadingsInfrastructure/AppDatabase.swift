@@ -24,16 +24,15 @@ final class AppDatabase {
     private var migrator: DatabaseMigrator {
         var migrator = DatabaseMigrator()
         
-//        #if DEBUG
+        #if DEBUG
         migrator.eraseDatabaseOnSchemaChange = true
-//        #endif
+        #endif
         
         migrator.registerMigration("init v2") { db in
             try db.create(table: "account") { t in
                 t.autoIncrementedPrimaryKey("id")
                 t.column("title", .text).notNull()
                 t.column("accountNumber", .integer)
-//                    .notNull()
                     .unique()
             }
             
@@ -41,7 +40,6 @@ final class AppDatabase {
                 t.autoIncrementedPrimaryKey("id")
                     
                 t.column("meterNumber", .numeric)
-//                    .notNull()
                     .unique()
                 t.column("accountNumber", .integer)
                     .references("account", column: "accountNumber", onDelete: .cascade
@@ -65,27 +63,45 @@ final class AppDatabase {
 // MARK: WRITING
 
 extension AppDatabase {
-    func saveAccount(_ account: inout Account) throws {
+    func saveAccount(_ account: inout Account, completion: @escaping (Result<String,Error>) -> Void) throws {
         try dbWriter.write { db in
             try account.save(db)
+            completion(.success("Successfully saved account: \(account)"))
         }
     }
     
-    func deleteAccount(account: Account) throws {
+    func deleteAccount(account: Account, completion: @escaping (Result<String,Error>) -> Void) throws {
         try dbWriter.write { db in
             _ = try Account.deleteOne(db, key: account.id)
+            completion(.success("Successfully deleted Account: \(account)"))
         }
     }
     
-    func saveMeter(_ meter: inout Meter) throws {
+    func saveMeter(_ meter: inout Meter, completion: @escaping (Result<String,Error>) -> Void) throws {
         try dbWriter.write { db in
             try meter.save(db)
+            completion(.success("Successfully saved meter: \(meter)"))
         }
     }
     
-    func saveMeterReading(_ meterReadingEntry: inout MeterReadingEntry) throws {
+    func deleteMeter(meter: Meter, completion: @escaping (Result<String,Error>) -> Void) throws {
+        try dbWriter.write { db in
+            _ = try Meter.deleteOne(db, key: meter.id)
+            completion(.success("Successfully deleted meter: \(meter)"))
+        }
+    }
+    
+    func saveMeterReading(_ meterReadingEntry: inout MeterReadingEntry, completion: @escaping (Result<String,Error>) -> Void) throws {
         try dbWriter.write { db in
             try meterReadingEntry.save(db)
+            completion(.success("Successfully saved reading: \(meterReadingEntry)"))
+        }
+    }
+    
+    func deleteReading(reading: MeterReadingEntry, completion: @escaping (Result<String,Error>) -> Void) throws {
+        try dbWriter.write { db in
+            _ = try MeterReadingEntry.deleteOne(db, key: reading.id)
+            completion(.success("Successfully deleted reading: \(reading)"))
         }
     }
 }

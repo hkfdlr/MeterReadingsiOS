@@ -11,22 +11,18 @@ import MeterReadingsCore
 import MeterReadingsInfrastructure
 
 struct ChartView: View {
-    @State var meter: Meter
+    @EnvironmentObject var viewModel: ChartViewModel
+    
     @State var showSheet: Bool = false
     var selectedChartIndex = 0
     
-    let readingSaver = ConcreteSaveReadingCommand(readingSaver: SaveReadingAdapter())
-    let readingGetter = ConcreteGetReadingCommand(readingGetter: GetReadingAdapter())
-    
     @State var sheetEnteredValue: Double = 0
     @State var sheetPickedDate: Date = Date()
-    @State var readingDataSortedByDate: [Double] = []
-    @State var readingData: [MeterReadingEntry] = []
     @State var sheetConfirmed: Bool = false
         
     var body: some View {
         VStack {
-            LineView(data: readingDataSortedByDate)
+            LineView(data: viewModel.readingDataSortedByDate)
                 .padding(.all, 12)
         }
         .sheet(isPresented: $showSheet, onDismiss:{
@@ -34,7 +30,7 @@ struct ChartView: View {
         }) {
             AddEntrySheet(isShowingSheet: $showSheet, sheetConfirmed: $sheetConfirmed ,enteredValue: $sheetEnteredValue, pickedDate: $sheetPickedDate)
         }
-        .navigationTitle(self.meter.title)
+        .navigationTitle(viewModel.meter.title)
         .navigationBarItems(trailing:
             Button("Add", action: {
                 sheetConfirmed = false
@@ -43,7 +39,7 @@ struct ChartView: View {
         )
         .onAppear(perform: {
             do {
-                try getAllReadings(meterNumber: meter.meterNumber)
+                try viewModel.getAllReadings(meterNumber: viewModel.meter.meterNumber)
             } catch {
                 debugPrint(error.localizedDescription)
             }
@@ -51,10 +47,13 @@ struct ChartView: View {
     }
     
     func sheetDismissed(readingValue: Double, pickedDate: Date) {
-        var newReading = MeterReadingEntry(id: nil, meterNumber: meter.meterNumber, date: pickedDate, readingValue: readingValue)
+        if (readingValue < viewModel.readingDataSortedByDate.max() ?? 0) {
+            debugPrint("New value has to be greater than previous values")
+            return }
+        var newReading = MeterReadingEntry(id: nil, meterNumber: viewModel.meter.meterNumber, date: pickedDate, readingValue: readingValue)
         do {
             if (sheetConfirmed == true) {
-                try saveReading(reading: &newReading)
+                try viewModel.saveReading(reading: &newReading)
             }
         } catch {
             debugPrint(error.localizedDescription)
@@ -77,46 +76,12 @@ struct ChartView: View {
         return entryValues
     }
     
-    func saveReading(reading: inout MeterReadingEntry) throws {
-        try readingSaver.saveReading(reading: &reading, completion: {
-            switch $0 {
-            case let .success(value): debugPrint(value)
-            case let .failure(error): debugPrint(error.localizedDescription)
-            }
-        })
-        try getAllReadings(meterNumber: meter.meterNumber)
-    }
     
-    func getAllReadings(meterNumber: Int) throws {
-        try readingGetter.getReadings(meterNumber: meterNumber, completion: {
-            switch $0 {
-            case let .success(readings): do {
-                for elem in readings {
-                    if (!self.readingData.contains(elem)) {
-                        let index = self.readingData.endIndex
-                        self.readingData.insert(elem, at: index)
-                    }
-                }
-            }
-            case let .failure(error): debugPrint(error.localizedDescription)
-            }
-        })
-        sortReadingData()
-    }
-    
-    func sortReadingData() {
-        readingDataSortedByDate = []
-        readingData = readingData.sorted {
-            $0.date < $1.date
-        }
-        for entry in readingData {
-            readingDataSortedByDate.append(entry.readingValue)
-        }
-    }
 }
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ChartView(meter: Meter(id: nil, meterNumber: 123, accountNumber: 123, title: "asd", meterType: MeterType.power, meterReadingEntries: []), sheetEnteredValue: 0, sheetPickedDate: Date())
+        ChartView()
+            .environmentObject(ChartViewModel(meter: Meter(id: nil, meterNumber: 123, accountNumber: 123, title: "Title", meterType: MeterType.gas, meterReadingEntries: [])))
     }
 }
