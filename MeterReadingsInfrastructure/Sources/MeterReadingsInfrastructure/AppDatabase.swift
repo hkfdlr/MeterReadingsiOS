@@ -44,7 +44,6 @@ final class AppDatabase {
 //                    .notNull()
                     .unique()
                 t.column("accountNumber", .integer)
-                    .unique()
                     .references("account", column: "accountNumber", onDelete: .cascade
                     )
                 t.column("title", .text)
@@ -54,7 +53,6 @@ final class AppDatabase {
             try db.create(table: "meterReadingEntry") { t in
                 t.autoIncrementedPrimaryKey("id")
                 t.column("meterNumber", .numeric)
-                    .unique()
                     .references("meter", column: "meterNumber", onDelete: .cascade)
                 t.column("date", .date)
                 t.column("readingValue", .integer)
