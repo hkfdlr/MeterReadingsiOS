@@ -22,9 +22,9 @@ extension AppDatabase {
             try fileManager.createDirectory(at:folderURL, withIntermediateDirectories: true)
             
             let dbURL = folderURL.appendingPathComponent("testdb.sqlite")
-            let dbQueue = try DatabaseQueue(path: dbURL.path)
+            let dbPool = try DatabaseQueue(path: dbURL.path)
             
-            let appDatabase = try AppDatabase(dbQueue, dbQueue)
+            let appDatabase = try AppDatabase(dbPool, dbPool)
             return appDatabase
         }
         catch {

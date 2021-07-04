@@ -19,6 +19,7 @@ extension MeterReadingEntry: TableRecord, FetchableRecord, MutablePersistableRec
         id = row["id"]
         date = row["date"]
         readingValue = row["readingValue"]
+        meterNumber = row["meterNumber"]
     }
     
     public func encode(to container: inout PersistenceContainer) {

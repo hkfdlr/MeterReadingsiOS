@@ -50,7 +50,7 @@ final class AppDatabase {
             
             try db.create(table: "meterReadingEntry") { t in
                 t.autoIncrementedPrimaryKey("id")
-                t.column("meterNumber", .numeric)
+                t.column("meterNumber", .integer)
                     .references("meter", column: "meterNumber", onDelete: .cascade)
                 t.column("date", .date)
                 t.column("readingValue", .integer)
@@ -63,6 +63,15 @@ final class AppDatabase {
 // MARK: WRITING
 
 extension AppDatabase {
+    
+    func dropAllTables() throws {
+        try dbWriter.write { db in
+            try db.drop(table: "account")
+            try db.drop(table: "meter")
+            try db.drop(table: "meterReadingEntry")
+        }
+    }
+    
     func saveAccount(_ account: inout Account, completion: @escaping (Result<String,Error>) -> Void) throws {
         try dbWriter.write { db in
             try account.save(db)
