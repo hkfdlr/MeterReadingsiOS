@@ -1,7 +1,7 @@
 import XCTest
 @testable import MeterReadingsCore
 
-// MARK: Account Command Mocks
+// MARK: Account Mocks
 
 class MockAccountSaver: AccountSaver {
     func saveAccount(account: inout Account, completion: @escaping (Result<String, Error>) -> Void) throws {
@@ -29,7 +29,7 @@ class MockAccountDeleter: AccountDeleter {
     }
 }
 
-// MARK: Meter Command Mocks
+// MARK: Meter Mocks
 
 class MockMeterSaver: MeterSaver {
     func saveMeter(meter: inout Meter, completion: @escaping (Result<String, Error>) -> Void) throws {
@@ -50,6 +50,29 @@ class MockMeterGetter: MeterGetter {
         completion(.success(
             filtered
         ))
+    }
+}
+
+// MARK: Reading Mocks
+
+class MockReadingSaver: ReadingSaver {
+    func saveReading(reading: inout MeterReadingEntry, completion: @escaping (Result<String, Error>) -> Void) throws {
+        completion(.success("Reading saved"))
+    }
+}
+
+class MockReadingGetter: ReadingGetter {
+    let allReadings = [
+        MeterReadingEntry(id: 1, meterNumber: 123, date: Date(timeIntervalSince1970: 0), readingValue: 123),
+        MeterReadingEntry(id: 2, meterNumber: 123, date: Date(timeIntervalSince1970: 60000), readingValue: 357),
+        MeterReadingEntry(id: 3, meterNumber: 321, date: Date(timeIntervalSince1970: 120000), readingValue: 111)
+    ]
+    
+    func getReadings(meterNumber: Int, completion: @escaping (Result<[MeterReadingEntry], Error>) -> Void) throws {
+        let filtered = allReadings.filter({ reading in
+            return reading.meterNumber == meterNumber
+        })
+        completion(.success(filtered))
     }
 }
 
@@ -152,8 +175,40 @@ final class MeterTests: XCTestCase {
     }
 }
 
+// MARK: Reading Tests
+
 final class ReadingTests: XCTestCase {
+        
+    func testSaveReading() {
+        let saveReadingCommand = ConcreteSaveReadingCommand(readingSaver: MockReadingSaver())
+        var newReading = MeterReadingEntry(id: 1, meterNumber: 123, date: Date(), readingValue: 123)
+        
+        do {
+            try saveReadingCommand.saveReading(reading: &newReading) {
+                switch $0 {
+                case let .success(value): XCTAssertEqual(value, "Reading saved")
+                case let .failure(error): XCTFail(error.localizedDescription)
+                }
+            }
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
     
-    // TODOs
-    
+    func testGetReading() {
+        let getReadingCommand = ConcreteGetReadingCommand(readingGetter: MockReadingGetter())
+        let correctReadings = [MeterReadingEntry(id: 1, meterNumber: 123, date: Date(timeIntervalSince1970: 0), readingValue: 123),
+                               MeterReadingEntry(id: 2, meterNumber: 123, date: Date(timeIntervalSince1970: 60000), readingValue: 357)]
+        
+        do {
+            try getReadingCommand.getReadings(meterNumber: 123) {
+                switch $0 {
+                case let .success(readings): XCTAssertEqual(correctReadings, readings)
+                case let .failure(error): XCTFail(error.localizedDescription)
+                }
+            }
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
 }
